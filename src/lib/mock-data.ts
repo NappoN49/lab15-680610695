@@ -1,4 +1,5 @@
 import type { Student, Course, Enrollment } from "@/lib/types";
+import myPhoto from "@/Myphoto.jpg";
 
 export const students: Student[] = [
   {
@@ -75,5 +76,5 @@ export const currentStudent = students.find(
 export const currentUser = {
   nickname: "Nano",
   role: "STUDENT" as "STUDENT" | "ADMIN",
-  avatar: "/profile.svg",
+  avatar: myPhoto,
 };
