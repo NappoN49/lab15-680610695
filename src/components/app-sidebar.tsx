@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -12,6 +13,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { currentUser } from "@/lib/mock-data";
 
 const items = [
   { title: "หน้าแรก", url: "/", icon: Home },
@@ -35,7 +38,6 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  {/* ✅ แก้ไข: Base UI ใช้ `render={<Link />}` แทน `asChild` */}
                   <SidebarMenuButton
                     isActive={location.pathname === item.url}
                     render={<Link to={item.url} />}
@@ -49,6 +51,22 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
+      <SidebarFooter className="border-t">
+        <div className="flex items-center gap-3 rounded-lg border bg-muted/40 px-2 py-2">
+          <Avatar size="sm" className="bg-violet-600 text-white">
+            <AvatarImage src={currentUser.avatar} alt={currentUser.nickname} />
+            <AvatarFallback>{currentUser.nickname.slice(0, 1)}</AvatarFallback>
+          </Avatar>
+
+          <div className="min-w-0 flex-1">
+            <div className="truncate text-sm font-medium">{currentUser.nickname}</div>
+            <div className="truncate text-xs text-muted-foreground">
+              {currentUser.role}
+            </div>
+          </div>
+        </div>
+      </SidebarFooter>
     </Sidebar>
   );
 }
