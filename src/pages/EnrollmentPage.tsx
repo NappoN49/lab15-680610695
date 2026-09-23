@@ -6,14 +6,12 @@ export default function Enrollent() {
   return (
     <div className="space-y-4">
       <div className="flex items-start justify-between gap-4">
-        <div className="flex justify-between">
           <div>
           <h1 className="text-xl font-semibold">รายวิชาทั้งหมด</h1>
           </div>
           <div>
           <RegisterDialog />
           </div>
-        </div>
       </div>
 
       <div className="flex flex-col gap-4">
